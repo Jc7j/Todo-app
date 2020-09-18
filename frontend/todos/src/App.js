@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import './App.css';
 
-function App() {
+const App = () => {
+  const [todos, setTodos] = useState([]);
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const result = await axios({
+          method: 'get',
+          url: 'http://127.0.0.1:8000/todos/',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        setTodos(result.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchTodos();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {todos.map((item) => (
+        <div key={item.id}>
+          <h1>{item.title}</h1>
+          <span>{item.description}</span>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default App;
