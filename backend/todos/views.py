@@ -12,5 +12,6 @@ class TodoViewSet(viewsets.ModelViewSet):
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthorOrReadOnly,)
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer

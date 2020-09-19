@@ -2,6 +2,8 @@
 | ------------------------------------ | --------- |
 | /                                    | GET       |
 | /:pk/                                | GET       |
+| users/                               | GET       |
+| users/:pk/                           | GET       |
 | /dj-rest-auth/registration           | POST      |
 | /dj-rest-auth/login                  | POST      |
 | /dj-rest-auth/logout                 | GET       |
