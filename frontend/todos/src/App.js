@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import axios from 'axios';
 
 import './App.css';
@@ -26,12 +27,9 @@ const App = () => {
 
   return (
     <div className="App">
-      {todos.map((item) => (
-        <div key={item.id}>
-          <h1>{item.title}</h1>
-          <span>{item.description}</span>
-        </div>
-      ))}
+      <BrowserRouter>
+        <div className="Content"></div>
+      </BrowserRouter>
     </div>
   );
 };
