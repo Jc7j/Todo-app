@@ -9,6 +9,8 @@ verify_ssl = true
 django = "==3.1.1"
 djangorestframework = "*"
 django-cors-headers = "*"
+dj-rest-auth = "*"
+django-allauth = "*"
 
 [requires]
 python_version = "3.8"

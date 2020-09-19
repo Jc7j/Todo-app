@@ -1,8 +1,10 @@
 from django.urls import path
+from rest_framework.routers import SimpleRouter
+from .views import UserViewSet, TodoViewSet
 
-from . import views
+router = SimpleRouter()
 
-urlpatterns = [
-    path('', views.ListTodo.as_view()),
-    path('<int:pk>/', views.DetailTodo.as_view()),
-]
+router.register('users', UserViewSet, basename='users')
+router.register('', TodoViewSet, basename='todos')
+
+urlpatterns = router.urls

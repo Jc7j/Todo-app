@@ -1,14 +1,16 @@
-from rest_framework import generics
-
 from .models import Todo
-from .serializers import TodoSerializer
+from .permissions import IsAuthorOrReadOnly
+from .serializers import TodoSerializer, UserSerializer
+from django.contrib.auth import get_user_model
+from rest_framework import viewsets
 
 
-class ListTodo(generics.ListCreateAPIView):
+class TodoViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthorOrReadOnly,)
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
 
 
-class DetailTodo(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Todo.objects.all()
-    serializer_class = TodoSerializer
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = get_user_model().objects.all()
+    serializer_class = UserSerializer
