@@ -10,7 +10,7 @@ const App = () => {
       try {
         const result = await axios({
           method: 'get',
-          url: 'http://127.0.0.1:8000/todos/',
+          url: 'http://127.0.0.1:8000/api/v1',
           headers: {
             'Content-Type': 'application/json',
           },
